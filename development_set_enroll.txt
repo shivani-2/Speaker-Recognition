@@ -58,7 +58,3 @@ yweweler\0_yweweler_14.wav
 yweweler\0_yweweler_15.wav
 yweweler\0_yweweler_16.wav
 yweweler\0_yweweler_17.wav
-
-
-
-

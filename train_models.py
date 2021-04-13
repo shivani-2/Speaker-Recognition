@@ -38,7 +38,7 @@ for path in file_paths:
         features = vector
     else:
         features = np.vstack((features, vector))
-    # when features of 5 files of speaker are concatenated, then do model training
+    # when features of 10 files of speaker are concatenated, then do model training
     if count == 10:    
         gmm = GMM(n_components = 16, max_iter = 200, covariance_type='diag',n_init = 3)
         gmm.fit(features)
