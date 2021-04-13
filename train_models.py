@@ -10,7 +10,7 @@ warnings.filterwarnings("ignore")
 
 
 #path to training data
-source   = "development_set\\"   
+source   = "dataset\\"   
 
 #path where training speakers will be saved
 dest = "speaker_models\\"
@@ -39,12 +39,12 @@ for path in file_paths:
     else:
         features = np.vstack((features, vector))
     # when features of 5 files of speaker are concatenated, then do model training
-    if count == 5:    
+    if count == 10:    
         gmm = GMM(n_components = 16, max_iter = 200, covariance_type='diag',n_init = 3)
         gmm.fit(features)
         
         # dumping the trained gaussian model
-        picklefile = path.split("-")[0]+".gmm"
+        picklefile = path.split("_")[1]+".gmm"
         cPickle.dump(gmm,open(dest + picklefile,'wb'))
         print ("+ modeling completed for speaker:",picklefile," with data point = ",features.shape)
         features = np.asarray(())

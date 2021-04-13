@@ -11,7 +11,7 @@ import time
 
 
 #path to training data
-source   = "development_set\\"   
+source   = "dataset\\"   
 
 modelpath = "speaker_models\\"
 
