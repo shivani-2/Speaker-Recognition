@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 14 19:26:59 2015
-
-@author: Abhijeet Kumar
-@code :  This program implemets feature (MFCC + delta)
-         extraction process for an audio. 
-@Note :  20 dim MFCC(19 mfcc coeff + 1 frame log energy)
-         20 dim delta computation on MFCC features. 
-@output : It returns 40 dimensional feature vectors for an audio.
-"""
-
 import numpy as np
 from sklearn import preprocessing
 import python_speech_features as mfcc

@@ -13,9 +13,9 @@ warnings.filterwarnings("ignore")
 source   = "dataset\\"   
 
 #path where training speakers will be saved
-dest = "speaker_models\\"
+dest = "speaker_models_480\\"
 
-train_file = "development_set_enroll.txt"        
+train_file = "training_data_480.txt"        
 
 
 file_paths = open(train_file,'r')
@@ -38,8 +38,8 @@ for path in file_paths:
         features = vector
     else:
         features = np.vstack((features, vector))
-    # when features of 10 files of speaker are concatenated, then do model training
-    if count == 10:    
+    # when features of 50 files of speaker are concatenated, then do model training
+    if count == 480:    
         gmm = GMM(n_components = 16, max_iter = 200, covariance_type='diag',n_init = 3)
         gmm.fit(features)
         
