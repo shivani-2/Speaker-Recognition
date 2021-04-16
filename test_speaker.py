@@ -16,11 +16,11 @@ import time
 
 
 #path to training data
-source   = "dataset\\"   
+source   = "dataset_test\\"   
 
-modelpath = "speaker_models_480\\"
+modelpath = "speaker_models_20\\"
 
-test_file = "test_data_50.txt"        
+test_file = "test_shivani.txt"        
 
 file_paths = open(test_file,'r')
 
