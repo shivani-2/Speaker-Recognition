@@ -36,32 +36,35 @@ speakers   = [fname.split("\\")[-1].split(".gmm")[0] for fname
 correct = 0
 incorrect = 0
 
-# Read the test directory and get the list of test audio files 
-for path in file_paths:   
+def check_speaker():
+    # Read the test directory and get the list of test audio files 
+    for path in file_paths:   
     
-    path = path.strip()   
-    print (path)
-    sr,audio = read(source + path)
-    vector   = extract_features(audio,sr)
+        path = path.strip()   
+        print (path)
+        sr,audio = read(source + path)
+        vector   = extract_features(audio,sr)
     
-    log_likelihood = np.zeros(len(models)) 
+        log_likelihood = np.zeros(len(models)) 
     
-    for i in range(len(models)):
-        gmm    = models[i]         #checking with each model one by one
-        scores = np.array(gmm.score(vector))
-        log_likelihood[i] = scores.sum()
+        for i in range(len(models)):
+            gmm    = models[i]         #checking with each model one by one
+            scores = np.array(gmm.score(vector))
+            log_likelihood[i] = scores.sum()
     
-    winner = np.argmax(log_likelihood)
-    print ("\tdetected as - ", speakers[winner])
-
-    print(log_likelihood)
+        winner = np.argmax(log_likelihood)
+        detected_speaker = "\tdetected as -" + speakers[winner]
+        # return detected_speaker
+        print(detected_speaker)
+        # print(log_likelihood)
     
     if(path.split("_")[1] == speakers[winner]):
-        print("correct")
-        correct = correct + 1
+        return detected_speaker
     else:
-        print("incorrect")
-        incorrect = incorrect + 1
+        return ("Please try again")
 
-print("correct:", correct)
-print("incorrect:", incorrect)
+if __name__ == "__main__":
+     print ("Speaker testing")
+
+# print("correct:", correct)
+# print("incorrect:", incorrect)
