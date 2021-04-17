@@ -15,7 +15,7 @@ source   = "dataset\\"
 #path where training speakers will be saved
 dest = "speaker_models_20\\"
 
-train_file = "train_shivani.txt"        
+train_file = "training_data_30.txt"        
 
 
 file_paths = open(train_file,'r')
