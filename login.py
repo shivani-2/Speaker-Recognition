@@ -59,7 +59,7 @@ with sr.Microphone() as source:
 
 
 text = int(text)
-print(text)
+# s
 
 print(check_speaker())
 
