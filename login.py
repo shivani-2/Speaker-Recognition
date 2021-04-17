@@ -1,14 +1,16 @@
 import pyaudio
 import wave
 from test_speaker import check_speaker
+import speech_recognition as sr
+import random
  
-name = input("Enter your Name")
+name = input("Enter your Name: ")
 FORMAT = pyaudio.paInt16
 CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 3
-WAVE_OUTPUT_FILENAME = "test_" + name + "_1.wav"
+WAVE_OUTPUT_FILENAME = "test_" + name + "_5.wav"
  
 audio = pyaudio.PyAudio()
 
@@ -45,15 +47,12 @@ waveFile.setframerate(RATE)
 waveFile.writeframes(b''.join(frames))
 waveFile.close()
 
-
-
-import speech_recognition as sr
-import random
-
 r = sr.Recognizer()
 with sr.Microphone() as source:
     print("Can we hear it once more:")
+    print ("recording...")
     audio = r.listen(source)
+    print ("finished recording")
     try:
         text = r.recognize_google(audio)
         print("You said : {}".format(text))
@@ -62,9 +61,12 @@ with sr.Microphone() as source:
 
 
 text = int(text)
+print(text)
 
-if (number == text):
-    speaker = check_speaker()
-    print("You have been detected as ", speaker)
-else:
-    print("Please try again")
+# print(check_speaker())
+
+# if (number == text):
+#     speaker = check_speaker()
+#     print("You have been detected as ", speaker)
+# else:
+#     print("Please try again")

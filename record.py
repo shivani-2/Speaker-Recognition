@@ -6,7 +6,7 @@ CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 3
-WAVE_OUTPUT_FILENAME = "test_shivani_1.wav"
+WAVE_OUTPUT_FILENAME = "test_shivani_2.wav"
  
 audio = pyaudio.PyAudio()
 
