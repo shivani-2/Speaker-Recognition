@@ -5,7 +5,7 @@ import python_speech_features as mfcc
 def calculate_delta(array):
     """Calculate and returns the delta of given feature vector matrix"""
 
-    rows = array.shape
+    rows,cols = array.shape
     deltas = np.zeros((rows,20))
     N = 2
     for i in range(rows):
