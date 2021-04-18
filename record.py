@@ -1,6 +1,5 @@
 import pyaudio
 import wave
- 
 
 name = input("Enter your name: ")
 FORMAT = pyaudio.paInt16
