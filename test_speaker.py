@@ -41,7 +41,7 @@ def check_speaker():
     for path in file_paths:   
     
         path = path.strip()   
-        print (path)
+        # print (path)
         sr,audio = read(source + path)
         vector   = extract_features(audio,sr)
     
@@ -53,15 +53,14 @@ def check_speaker():
             log_likelihood[i] = scores.sum()
     
         winner = np.argmax(log_likelihood)
-        detected_speaker = "\tdetected as -" + speakers[winner]
+        detected_speaker = speakers[winner]
         # return detected_speaker
         # print(detected_speaker)
         # print(log_likelihood)
     
-    if(path.split("_")[1] == speakers[winner]):
-        return detected_speaker
-    else:
-        return ("Please try again")
+        if(path.split("_")[1] == speakers[winner]):
+            return detected_speaker
+
 
 if __name__ == "__main__":
     print ("Speaker testing")

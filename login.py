@@ -6,7 +6,7 @@ from test_speaker import check_speaker
 
 name = input("Enter your Name: ")
 FORMAT = pyaudio.paInt16
-CHANNELS = 2
+CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 3
@@ -59,9 +59,8 @@ with sr.Microphone() as source:
 
 
 text = int(text)
-# s
 
-print(check_speaker())
+# print(check_speaker())
 
 if (number == text):
     speaker = check_speaker()
