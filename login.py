@@ -10,7 +10,7 @@ CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 3
-WAVE_OUTPUT_FILENAME = "test_" + name + "_7.wav"
+WAVE_OUTPUT_FILENAME = "test_" + name + "_8.wav"
  
 audio = pyaudio.PyAudio()
 
@@ -64,6 +64,8 @@ text = int(text)
 
 if (number == text):
     speaker = check_speaker()
-    print("You have been detected as ", speaker)
-else:
-    print("Please try again")
+    # print(speaker)
+    if not speaker:
+        print("Please try again")
+    else:
+        print("You have been detected as ", speaker)

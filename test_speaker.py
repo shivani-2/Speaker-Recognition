@@ -57,13 +57,18 @@ def check_speaker():
         # return detected_speaker
         # print(detected_speaker)
         # print(log_likelihood)
+<<<<<<< Updated upstream
     
         if(path.split("_")[1] == speakers[winner]):
             return detected_speaker
 
+=======
+        if(path.split("_")[1] == speakers[winner]):
+            return detected_speaker
+>>>>>>> Stashed changes
 
+    
 if __name__ == "__main__":
     print ("Speaker testing")
-
 # print("correct:", correct)
 # print("incorrect:", incorrect)
