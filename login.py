@@ -6,11 +6,11 @@ from test_speaker import check_speaker
 
 name = input("Enter your Name: ")
 FORMAT = pyaudio.paInt16
-CHANNELS = 1
+CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 3
-WAVE_OUTPUT_FILENAME = "test_" + name + "_8.wav"
+WAVE_OUTPUT_FILENAME = "test_" + name + "_9.wav"
  
 audio = pyaudio.PyAudio()
 
