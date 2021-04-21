@@ -6,12 +6,12 @@ CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 3
-WAVE_OUTPUT_FILENAME = "9_yukta_1.wav"
+WAVE_OUTPUT_FILENAME = "9_mau_1.wav"
  
 audio = pyaudio.PyAudio()
 
 #path where training speakers will be saved
-dest = "dataset\\yukta\\"
+dest = "dataset\\mau\\"
 
 # import random
 # number = random.randint(1000,9999)

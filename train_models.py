@@ -17,7 +17,6 @@ dest = "speaker_models_20\\"
 
 train_file = "train_shivani.txt"        
 
-
 file_paths = open(train_file,'r')
 
 count = 1
@@ -32,7 +31,7 @@ for path in file_paths:
     sr,audio = read(source + path)
     
     # extract 40 dimensional MFCC & delta MFCC features
-    vector   = extract_features(audio,sr)
+    vector = extract_features(audio,sr)
     
     if features.size == 0:
         features = vector
@@ -49,5 +48,4 @@ for path in file_paths:
         print ("+ modeling completed for speaker:",picklefile," with data point = ",features.shape)
         features = np.asarray(())
         count = 0
-    count = count + 1
-    
+    count = count + 1   
