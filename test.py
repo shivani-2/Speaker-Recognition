@@ -1,18 +1,5 @@
-import os
+train_file = "testing_file.txt" 
 
-name = input("Enter name:")
-
-check_dir = "dataset_train\\" + name 
-print(check_dir)
-# Check whether the specified path is an existing directory or not 
-isdir = os.path.isdir(check_dir) 
-print (isdir)
-
-if not isdir:
-    # Parent Directory path
-    parent_dir = "dataset_train\\"
-  
-    # Path
-    path = os.path.join(parent_dir, name)
-  
-    os.makedirs(path)
+file_clean = open(train_file,'r+')
+file_clean.truncate(0)
+file_clean.close()

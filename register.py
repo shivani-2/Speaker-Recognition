@@ -1,9 +1,10 @@
 import pyaudio
 import wave
 import os
-# from train_models import check_speaker
+from train_models import train_model
 
 name = input("Enter your name:")
+
 for count in range(10):
     print("Say the number ", count)
     FORMAT = pyaudio.paInt16
@@ -56,9 +57,16 @@ for count in range(10):
     OUTPUT_FILENAME = str(count) + "_" + name + "_1.wav"
     WAVE_OUTPUT_FILENAME=os.path.join(dest,OUTPUT_FILENAME)
 
+    trainedfilelist = open("training_file.txt", 'a')
+    trainedfilelist.write(OUTPUT_FILENAME+"\n")
+
     waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
     waveFile.setnchannels(CHANNELS)
     waveFile.setsampwidth(audio.get_sample_size(FORMAT))
     waveFile.setframerate(RATE)
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
+
+
+train_model()
+

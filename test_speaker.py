@@ -14,29 +14,29 @@ import warnings
 warnings.filterwarnings("ignore")
 import time
 
+def check_speaker():
+        
+    #path to training data
+    source   = "dataset_test\\"   
 
-#path to training data
-source   = "dataset_test\\"   
+    modelpath = "speaker_models\\"
 
-modelpath = "speaker_models_20\\"
+    test_file = "testing_file.txt"        
 
-test_file = "test_shivani.txt"        
-
-file_paths = open(test_file,'r')
+    file_paths = open(test_file,'r')
 
 
-gmm_files = [os.path.join(modelpath,fname) for fname in 
+    gmm_files = [os.path.join(modelpath,fname) for fname in 
               os.listdir(modelpath) if fname.endswith('.gmm')]
 
-#Load the Gaussian gender Models
-models    = [cPickle.load(open(fname,'rb')) for fname in gmm_files]
-speakers   = [fname.split("\\")[-1].split(".gmm")[0] for fname 
+    #Load the Gaussian gender Models
+    models    = [cPickle.load(open(fname,'rb')) for fname in gmm_files]
+    speakers   = [fname.split("\\")[-1].split(".gmm")[0] for fname 
               in gmm_files]
 
-correct = 0
-incorrect = 0
+    # correct = 0
+    # incorrect = 0
 
-def check_speaker():
     # Read the test directory and get the list of test audio files 
     for path in file_paths:   
     
