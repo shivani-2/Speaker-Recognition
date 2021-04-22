@@ -61,8 +61,13 @@ def check_speaker():
         if(path.split("_")[1] == speakers[winner]):
             return detected_speaker
 
+    #Clear the testing_file.txt
+    file_clean = open("testing_file.txt",'r+')
+    file_clean.truncate(0)
+    file_clean.close()
     
 if __name__ == "__main__":
     print ("Speaker testing")
+    # check_speaker()
 # print("correct:", correct)
 # print("incorrect:", incorrect)

@@ -3,24 +3,21 @@ import wave
 import speech_recognition as sr
 import random
 from test_speaker import check_speaker
+import os
 
 name = input("Enter your Name: ")
+
 FORMAT = pyaudio.paInt16
 CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 3
-WAVE_OUTPUT_FILENAME = "test_" + name + "_1.wav"
  
 audio = pyaudio.PyAudio()
-
-#path where training speakers will be saved
-dest = "dataset_test\\"
 
 import random
 number = random.randint(1000,9999)
 print(number)
-
  
 # start Recording
 stream = audio.open(format=FORMAT, channels=CHANNELS,
@@ -39,8 +36,14 @@ print ("finished recording")
 stream.stop_stream()
 stream.close()
 audio.terminate()
+
+OUTPUT_FILENAME="test_" + name + ".wav"
+WAVE_OUTPUT_FILENAME=os.path.join("dataset_test",OUTPUT_FILENAME)
+
+trainedfilelist = open("testing_file.txt", 'a')
+trainedfilelist.write(OUTPUT_FILENAME+"\n")
  
-waveFile = wave.open(dest + WAVE_OUTPUT_FILENAME, 'wb')
+waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
 waveFile.setnchannels(CHANNELS)
 waveFile.setsampwidth(audio.get_sample_size(FORMAT))
 waveFile.setframerate(RATE)
@@ -60,8 +63,6 @@ with sr.Microphone() as source:
 
 text = int(text)
 
-# print(check_speaker())
-
 if (number == text):
     speaker = check_speaker()
     # print(speaker)
@@ -69,3 +70,5 @@ if (number == text):
         print("Please try again")
     else:
         print("You have been detected as ", speaker)
+
+os.remove("dataset_test\\" + OUTPUT_FILENAME)

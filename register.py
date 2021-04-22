@@ -12,13 +12,8 @@ for count in range(10):
     RATE = 44100
     CHUNK = 1024
     RECORD_SECONDS = 3
-
-    # WAVE_OUTPUT_FILENAME = "9_mau_1.wav"
  
     audio = pyaudio.PyAudio()
-
-    #path where training speakers will be saved
-    # dest = "dataset\\mau\\"
  
     # start Recording
     stream = audio.open(format=FORMAT, channels=CHANNELS,
@@ -69,4 +64,8 @@ for count in range(10):
 
 
 train_model()
+
+file_clean = open("training_file.txt",'r+')
+file_clean.truncate(0)
+file_clean.close()
 

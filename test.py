@@ -1,5 +1,3 @@
-train_file = "testing_file.txt" 
+import os
 
-file_clean = open(train_file,'r+')
-file_clean.truncate(0)
-file_clean.close()
+os.remove("dataset_test\\test_mau_1.wav")

@@ -48,7 +48,3 @@ def train_model():
             features = np.asarray(())
             count = 0
         count = count + 1   
-    
-    file_clean = open(train_file,'r+')
-    file_clean.truncate(0)
-    file_clean.close()
