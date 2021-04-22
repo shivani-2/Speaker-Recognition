@@ -10,7 +10,7 @@ warnings.filterwarnings("ignore")
 
 
 #path to training data
-source   = "dataset\\"   
+source   = "dataset_train\\"   
 
 #path where training speakers will be saved
 dest = "speaker_models_20\\"

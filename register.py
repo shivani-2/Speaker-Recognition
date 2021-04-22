@@ -1,7 +1,7 @@
 import pyaudio
 import wave
 import os
-from train_models import check_speaker
+# from train_models import check_speaker
 
 name = input("Enter your name:")
 for count in range(10):
