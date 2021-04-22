@@ -71,4 +71,9 @@ if (number == text):
     else:
         print("You have been detected as ", speaker)
 
+#Clear the testing_file.txt
+file_clean = open("testing_file.txt",'a')
+file_clean.truncate()
+file_clean.close()
+
 os.remove("dataset_test\\" + OUTPUT_FILENAME)

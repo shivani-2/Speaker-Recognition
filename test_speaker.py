@@ -15,7 +15,6 @@ warnings.filterwarnings("ignore")
 import time
 
 def check_speaker():
-        
     #path to training data
     source   = "dataset_test\\"   
 
@@ -39,7 +38,6 @@ def check_speaker():
 
     # Read the test directory and get the list of test audio files 
     for path in file_paths:   
-    
         path = path.strip()   
         # print (path)
         sr,audio = read(source + path)
@@ -55,19 +53,14 @@ def check_speaker():
         winner = np.argmax(log_likelihood)
         detected_speaker = speakers[winner]
         # return detected_speaker
-        # print(detected_speaker)
-        # print(log_likelihood)
+        print(detected_speaker)
+        print(log_likelihood)
 
         if(path.split("_")[1] == speakers[winner]):
             return detected_speaker
-
-    #Clear the testing_file.txt
-    file_clean = open("testing_file.txt",'r+')
-    file_clean.truncate(0)
-    file_clean.close()
     
 if __name__ == "__main__":
     print ("Speaker testing")
-    # check_speaker()
+    check_speaker()
 # print("correct:", correct)
 # print("incorrect:", incorrect)
