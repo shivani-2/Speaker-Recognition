@@ -6,10 +6,10 @@ from speakerfeatures import extract_features
 import warnings
 warnings.filterwarnings("ignore")
 
-def train_model():
+def train_model(name):
 
     #path to training data
-    source   = "dataset_train\\"   
+    source   = "dataset_train\\" + name + "\\"
 
     #path where training speakers will be saved
     dest = "speaker_models\\"

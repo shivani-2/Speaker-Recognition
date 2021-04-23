@@ -11,7 +11,7 @@ for count in range(10):
     CHANNELS = 2
     RATE = 44100
     CHUNK = 1024
-    RECORD_SECONDS = 3
+    RECORD_SECONDS = 1
  
     audio = pyaudio.PyAudio()
  
@@ -38,7 +38,6 @@ for count in range(10):
 
     # Check whether the specified path is an existing directory or not 
     isdir = os.path.isdir(dest) 
-    # print (isdir)
 
     if not isdir:
         # Parent Directory path
@@ -63,7 +62,8 @@ for count in range(10):
     waveFile.close()
 
 
-train_model()
+train_model(name)
+print("User " + name + " succesfully registered")
 
 file_clean = open("training_file.txt",'r+')
 file_clean.truncate(0)
