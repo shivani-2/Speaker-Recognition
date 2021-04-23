@@ -18,13 +18,13 @@ def train_model(name):
 
     file_paths = open(train_file,'r')
 
-    count = 1
+    count = 0
 
-    # Extracting features for each speaker (5 files per speakers)
+    # Extracting features for each speaker (10 files per speakers)
     features = np.asarray(())
     for path in file_paths:    
         path = path.strip()   
-        print (path)
+        # print (path)
     
         # read the audio
         sr,audio = read(source + path)
@@ -36,8 +36,10 @@ def train_model(name):
             features = vector
         else:
             features = np.vstack((features, vector))
+        
+        # print(count)
         # when features of 50 files of speaker are concatenated, then do model training
-        if count == 10:    
+        if count == 9:    
             gmm = GMM(n_components = 16, max_iter = 200, covariance_type='diag',n_init = 3)
             gmm.fit(features)
         

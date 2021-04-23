@@ -37,11 +37,12 @@ stream.stop_stream()
 stream.close()
 audio.terminate()
 
-OUTPUT_FILENAME="test_" + name + ".wav"
+OUTPUT_FILENAME="test_" + name + "_1.wav"
 WAVE_OUTPUT_FILENAME=os.path.join("dataset_test",OUTPUT_FILENAME)
 
 trainedfilelist = open("testing_file.txt", 'a')
 trainedfilelist.write(OUTPUT_FILENAME+"\n")
+trainedfilelist.close()
  
 waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
 waveFile.setnchannels(CHANNELS)
@@ -49,6 +50,9 @@ waveFile.setsampwidth(audio.get_sample_size(FORMAT))
 waveFile.setframerate(RATE)
 waveFile.writeframes(b''.join(frames))
 waveFile.close()
+
+
+
 
 r = sr.Recognizer()
 with sr.Microphone() as source:
@@ -65,15 +69,17 @@ text = int(text)
 
 if (number == text):
     speaker = check_speaker()
-    # print(speaker)
+    
     if not speaker:
         print("Please try again")
     else:
         print("You have been detected as ", speaker)
 
+
+
 #Clear the testing_file.txt
-file_clean = open("testing_file.txt",'a')
-file_clean.truncate()
+file_clean = open("testing_file.txt",'r+')
+file_clean.truncate(0)
 file_clean.close()
 
 os.remove("dataset_test\\" + OUTPUT_FILENAME)

@@ -2,8 +2,16 @@ import pyaudio
 import wave
 import os
 from train_models import train_model
+import time
 
 name = input("Enter your name:")
+
+
+for count in range(10):
+    trainedfilelist = open("training_file.txt", 'a')
+    OUTPUT_FILENAME = str(count) + "_" + name + "_1.wav"
+    trainedfilelist.write(OUTPUT_FILENAME+"\n")
+    trainedfilelist.close()
 
 for count in range(10):
     print("Say the number ", count)
@@ -11,7 +19,7 @@ for count in range(10):
     CHANNELS = 2
     RATE = 44100
     CHUNK = 1024
-    RECORD_SECONDS = 1
+    RECORD_SECONDS = 3
  
     audio = pyaudio.PyAudio()
  
@@ -26,7 +34,6 @@ for count in range(10):
         data = stream.read(CHUNK)
         frames.append(data)
     print ("finished recording")
- 
  
     # stop Recording
     stream.stop_stream()
@@ -48,11 +55,13 @@ for count in range(10):
   
         os.makedirs(path)
 
+    print(str(count))
+
     OUTPUT_FILENAME = str(count) + "_" + name + "_1.wav"
     WAVE_OUTPUT_FILENAME=os.path.join(dest,OUTPUT_FILENAME)
 
-    trainedfilelist = open("training_file.txt", 'a')
-    trainedfilelist.write(OUTPUT_FILENAME+"\n")
+    # trainedfilelist = open("training_file.txt", 'a')
+    # trainedfilelist.write(OUTPUT_FILENAME+"\n")
 
     waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
     waveFile.setnchannels(CHANNELS)
@@ -61,6 +70,7 @@ for count in range(10):
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
 
+# time.sleep(5)
 
 train_model(name)
 print("User " + name + " succesfully registered")
@@ -68,4 +78,3 @@ print("User " + name + " succesfully registered")
 file_clean = open("training_file.txt",'r+')
 file_clean.truncate(0)
 file_clean.close()
-
