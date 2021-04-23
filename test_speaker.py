@@ -53,8 +53,11 @@ def check_speaker():
         winner = np.argmax(log_likelihood)
         detected_speaker = speakers[winner]
         # return detected_speaker
+        # print(detected_speaker)
+        # print(log_likelihood)
+        # print(path.split("_")[1])
 
-        if(path.split("_")[1] == speakers[winner]):
+        if(path.split("_")[1] == detected_speaker):
             return detected_speaker
     
 if __name__ == "__main__":

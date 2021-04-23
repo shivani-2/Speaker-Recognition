@@ -11,7 +11,7 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
-RECORD_SECONDS = 3
+RECORD_SECONDS = 5
  
 audio = pyaudio.PyAudio()
 
@@ -51,30 +51,25 @@ waveFile.setframerate(RATE)
 waveFile.writeframes(b''.join(frames))
 waveFile.close()
 
-
-
-
+# Digit Recogniton
 r = sr.Recognizer()
-with sr.Microphone() as source:
-    print("Can we hear it once more:")
-    audio = r.listen(source)
-    try:
-        text = r.recognize_google(audio)
-        print("You said : {}".format(text))
-    except:
-        print("Sorry could not recognize what you said")
+with sr.AudioFile(WAVE_OUTPUT_FILENAME) as source:
+    # listen for the data (load audio to memory)
+    audio_data = r.record(source)
+    # recognize (convert from speech to text)
+    text = r.recognize_google(audio_data)
+    print("You said : {}".format(text))
 
+number = str(number)
 
-text = int(text)
-
+# Checking if said number was equal to the random number displayed
 if (number == text):
     speaker = check_speaker()
-    
+    # print(speaker)
     if not speaker:
         print("Please try again")
     else:
         print("You have been detected as ", speaker)
-
 
 
 #Clear the testing_file.txt
